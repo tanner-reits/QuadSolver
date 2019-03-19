@@ -1,5 +1,5 @@
 #include "qsPutLine.h"
 
-int qsPutline(char line*, int nline) {
+int qsPutline(char* line, int nline) {
     
 }
