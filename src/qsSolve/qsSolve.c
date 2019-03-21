@@ -4,6 +4,9 @@
 #include "qsSolve.h"
 
 int qsSolve(double a, double b, double c, double* x1, double* x2) {
+    *x1 = NAN;
+    *x2 = NAN;
+    
     // Validate input
     if((a < FLT_MIN) || (a > FLT_MAX)) {
         return 0;
@@ -45,30 +48,29 @@ int qsSolve(double a, double b, double c, double* x1, double* x2) {
     // Check determinant
     double det = b2 - (4 * a * c);
     if(det < 0) {
-        *x1 = NAN;
-        *x2 = NAN;
-        
         return 0;
     }
     else if(det == 0) {
         *x1 = -b / (2 * c);
-        *x2 = NAN;
         
         return 1;
     }
     
     // Use quadratic equation
     if(b >= 0) {
-        *x1 = (-b - sqrt(b2 - (4 * a * c))) / (2 * a));
+        *x1 = (-b - sqrt(b2 - (4 * a * c))) / (2 * a);
         *x2 = ((2 * c) / (-b - sqrt(b2 - (4 * a * c))));
     }
-    else if() {
-        *x2 = (-b - sqrt(b2 - (4 * a * c))) / (2 * a));
+    else if(b < 0) {
+        *x2 = (-b - sqrt(b2 - (4 * a * c))) / (2 * a);
         *x1 = ((2 * c) / (-b - sqrt(b2 - (4 * a * c))));
     }
-    else {
-        *x1 = ((-b + sqrt(b2 - (4 * a * c))) / (2 * a));
-        *x2 = ((-b - sqrt(b2 - (4 * a * c))) / (2 * a));
+    
+    // Switch if in wrong order
+    if(*x1 > *x2) {
+        double temp = *x1;
+        *x1 = *x2;
+        *x2 = temp;
     }
     
     return 2;
