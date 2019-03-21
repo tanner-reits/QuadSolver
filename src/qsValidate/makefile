@@ -1,12 +1,15 @@
 CC = gcc
 CFLAGS = -O -Wall -pedantic
 
-test:
-	$(CC) $(CFLAGS) tqsValidate.c qsValidate.c -o test
+test: tqsValidate.o qsValidate.o
+	$(CC) $(CLFAGS) tqsValidate.o qsValidate.o -o test
 
-tqsValidate.c: qsValidate.h
+tqsValidate.o: qsValidate.h
 
-qsValidate.c: qsValidate.h
+qsValidate.o: qsValidate.h
+
+run-test: test
+	./test
 
 clean:
-	rm -f core test
+	rm -f *.o core test

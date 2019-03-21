@@ -1,16 +1,16 @@
-CC = gcc -lm
+CC = gcc 
 CFLAGS = -O -Wall -pedantic
 
-qsSolve: qsSolve.c
+test: tqsSolve.o qsSolve.o
+	$(CC) $(CFLAGS) qsSolve.o tqsSolve.o -o test
 
-test:
-	$(CC) qsSolve.c tqsSolve.c $(CFLAGS) -o test
+qsSolve.o: qsSolve.h
+
+tqsSolve.o: qsSolve.h
+
+make run-test: test
 	./test > tqsSolveOut.txt
 	diff tqsSolveOut.txt tqsSolveOutReal.txt
-
-qsSolve.c: qsSolve.h
-
-tqsSolve.c: qsSolve.h
 
 clean:
 	rm -f *.o core test
