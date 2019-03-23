@@ -1,5 +1,11 @@
 #include <stdlib.h>
 #include <string.h>
+#include <../qsValidate/qsValidate.h>
+#include <../qsSolve/qsSolve.h>
+#include <../qsErrors/qsErrors.h>
+#include <../qsGetLine/qsGetLine.h>
+#include <../qsPutLine/qsPutLine.h>
+#include <../qsResults/qsResults.h>
 
 int main(int argc, char** argv) {
     // Variables for functions
@@ -14,9 +20,9 @@ int main(int argc, char** argv) {
     double x2 = 0;
     
     // Check if logging enable parameter passed as command line argument
-    if((argc > 1) && (atoi(argv[1]) == 1)) {
-        qsLogEnable();
-    }
+//    if((argc > 1) && (atoi(argv[1]) == 1)) {
+//        qsLogEnable();
+//    }
     
     // Print program information header
     // ...
@@ -26,6 +32,9 @@ int main(int argc, char** argv) {
         qsErrors(ret, error, nline);
         return ret;
     }
+    
+    // Check if user prompted for help
+//    qsHelp();
     
     // Validate input
     if((ret = qsValidate(line, nline, &a, &b, &c)) != OK) {
@@ -39,11 +48,11 @@ int main(int argc, char** argv) {
         return ret;
     }
     
-    // Check results or errors
-    if((ret = qsResults()) != OK) {
-        qsErrors(ret, error, nline);
-        return ret;
-    }
+    // Check results
+//    if((ret = qsResults()) != OK) {
+//        qsErrors(ret, error, nline);
+//        return ret;
+//    }
     
     // Output results
     if((ret = qsPutLine(line, strnlen(line, nline))) != OK) {
@@ -52,5 +61,4 @@ int main(int argc, char** argv) {
     }
     
     return OK;
-    
 }

@@ -1,0 +1,7 @@
+3 The qSolve program was provided too few arguments
+4 The value for coefficient (A) is out of the 32-bit float range
+5 The value for coefficient (B) is out of the 32-bit float range
+6 The value for coefficient (A) is out of the 32-bit float range
+7 One or more of the coefficients entered has a format violation
+8 The address of X1 or X2 point to a NULL address
+9 The product of entered coefficients is out of bounds of a 64-bit double

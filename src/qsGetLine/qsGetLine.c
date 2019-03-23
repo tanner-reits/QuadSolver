@@ -15,7 +15,7 @@ int qsGetline(char* line, int nline) {
         printf("Bad Input (Please update this to reasons why its bad)");
         if (ret <= 2) {
             printf("Input has less than the required input values (Required: 3)");
-            return NaN;
+            return ARGS;
         }
         return 0;
     }
