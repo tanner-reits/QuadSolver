@@ -9,7 +9,8 @@ tqsValidate.o: qsValidate.h
 qsValidate.o: qsValidate.h
 
 run-test: test
-	./test
+	./test > tqsValidateOut.txt
+	diff tqsValidateOut.txt tqsValidateOutReal.txt
 
 clean:
 	rm -f *.o core test
