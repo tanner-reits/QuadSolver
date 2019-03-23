@@ -1,9 +1,9 @@
 #include "qsValidate.h"
 #include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
 #include <float.h>
-#include <stdlib.h>
+#include <math.h>
+#include "../qsErrors/qsErrors.h"
 
 
 /* This funtion parses a string passed as a parameter into coefficients a, b, and c for the quadratic equation.
@@ -14,13 +14,13 @@
 */
 int qsValidate(char* line, int nline, double* a, double* b, double* c) {
     // Initialize pointers
-    *a = 0;
-    *b = 0;
-    *c = 0;
+    *a = NAN;
+    *b = NAN;
+    *c = NAN;
     
     // Variables for parsing
     char* err = NULL;
-    char* tok = "";
+    char* tok = NULL;
     int args  = 0;
     char buf[nline + 1];
     
@@ -33,7 +33,7 @@ int qsValidate(char* line, int nline, double* a, double* b, double* c) {
             args++;
         }
         else {
-            *a = 0;
+            *a = NAN;
         }
     }
     if((tok = strtok(NULL, " ")) != NULL) {
@@ -42,7 +42,7 @@ int qsValidate(char* line, int nline, double* a, double* b, double* c) {
             args++;
         }
         else {
-            *b = 0;
+            *b = NAN;
         }
     }
     if((tok = strtok(NULL, " ")) != NULL) {
@@ -51,24 +51,24 @@ int qsValidate(char* line, int nline, double* a, double* b, double* c) {
             args++;
         }
         else {
-            *c = 0;
+            *c = NAN;
         }
     }
     
     if(args < 3) {
-        return args;
+        return ARGS;
     }
     
     // Check input ranges
     if((*a < FLT_MIN) || (*a > FLT_MAX)) {
-        return -1;
+        return A_OUT;
     } 
     if((*b < FLT_MIN) || (*b > FLT_MAX)) {
-        return -2;
+        return B_OUT;
     }
     if((*c < FLT_MIN) || (*c > FLT_MAX)) {
-        return -3;
+        return C_OUT;
     } 
     
-    return args;
+    return OK;
 }

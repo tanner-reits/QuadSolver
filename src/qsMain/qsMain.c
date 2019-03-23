@@ -18,33 +18,36 @@ int main(int argc, char** argv) {
         qsLogEnable();
     }
     
+    // Print program information header
+    // ...
+    
     // Get input line
     if((ret = qsGetLine(line, nline)) != OK) {
-        qsErrors(ret);
+        qsErrors(ret, error, nline);
         return ret;
     }
     
     // Validate input
     if((ret = qsValidate(line, nline, &a, &b, &c)) != OK) {
-        qsErrors(ret);
+        qsErrors(ret, error, nline);
         return ret;
     }
     
     // Apply quad solver
-    if((ret = qsSolve(a, b, c, &x1, &x2)) != OK) {
-        qsErrors(ret);
+    if((ret = qsSolve(a, b, c, &x1, &x2)) > ROOT_2) {
+        qsErrors(ret, error, nline);
         return ret;
     }
     
     // Check results or errors
     if((ret = qsResults()) != OK) {
-        qsErrors(ret);
+        qsErrors(ret, error, nline);
         return ret;
     }
     
     // Output results
     if((ret = qsPutLine(line, strnlen(line, nline))) != OK) {
-        qsErrors(ret);
+        qsErrors(ret, error, nline);
         return ret;
     }
     
