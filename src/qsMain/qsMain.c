@@ -26,7 +26,10 @@ int main(int argc, char** argv) {
 
     // Print program information header
     printf("Quadratic Solver\n");
-    printf("Version: 0.1.0\n");
+    printf("  Version: 0.1.1\n");
+    printf("  Company: JKK Engineers\n");
+    printf("  For Help type \"help\"\n")
+
     // ...
 
     // Get input line
