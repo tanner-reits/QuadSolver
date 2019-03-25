@@ -62,7 +62,7 @@ int main(int argc, char** argv) {
     if((ret = qsResults(x1Val, x2Val)) != OK) {
         qsErrors(ret, error, nline);
         return ret;
-//    }
+    }
 
     // Output results
 //    if((ret = qsPutline(line, strnlen(line, nline))) != OK) {
