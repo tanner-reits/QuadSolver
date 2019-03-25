@@ -30,8 +30,6 @@ int main(int argc, char** argv) {
     printf("  Company: JKK Engineers\n");
     printf("  For Help type \"help\"\n")
 
-    // ...
-
     // Get input line
     if((ret = qsGetLine(line, nline)) != OK) {
         qsErrors(ret, error, nline);
