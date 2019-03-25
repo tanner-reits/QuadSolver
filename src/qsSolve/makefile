@@ -8,7 +8,7 @@ qsSolve.o: qsSolve.h
 
 tqsSolve.o: qsSolve.h
 
-make run-test: test
+run-test: test
 	./test > tqsSolveOut.txt
 	diff tqsSolveOut.txt tqsSolveOutReal.txt
 

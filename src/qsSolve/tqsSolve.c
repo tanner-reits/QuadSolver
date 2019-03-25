@@ -17,4 +17,7 @@ int main(int argc, char** argv) {
     
     ret = qsSolve(1.4e+9, 3.3e-10, 4.124e+3, &x1, &x2);
     printf("%d %.7e %.7e\n", ret, x1, x2);
+    
+    ret = qsSolve(1, 2, 1, &x1, &x2);
+    printf("%d %.7e %.7e\n", ret, x1, x2);
 }
