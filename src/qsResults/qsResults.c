@@ -13,8 +13,6 @@ int qsResults(double *x1, double *x2) {
     printf("x1 out of double range\n");
     return X2_OUTD;
   }
-    
-    printf("Results: x1 = %f, x2 = %f\n", *x1, *x2);
 
   return OK;
 }
