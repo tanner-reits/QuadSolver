@@ -1,11 +1,12 @@
 #include <stdlib.h>
 #include <string.h>
-#include <../qsValidate/qsValidate.h>
-#include <../qsSolve/qsSolve.h>
-#include <../qsErrors/qsErrors.h>
-#include <../qsGetLine/qsGetLine.h>
-#include <../qsPutLine/qsPutLine.h>
-#include <../qsResults/qsResults.h>
+#include <stdio.h>
+#include "../qsValidate/qsValidate.h"
+#include "../qsSolve/qsSolve.h"
+#include "../qsErrors/qsErrors.h"
+#include "../qsGetLine/qsGetLine.h"
+#include "../qsPutLine/qsPutLine.h"
+#include "../qsResults/qsResults.h"
 
 int main(int argc, char** argv) {
     // Variables for functions
@@ -30,7 +31,8 @@ int main(int argc, char** argv) {
     printf("  For Help type \"help\"\n\n");
 
     // Get input line
-    if((ret = qsGetLine(line, nline)) != OK) {
+    if((ret = qsGetline(line, nline)) != OK) {
+        printf("ERROR GET\n");
         qsErrors(ret, error, nline);
         return ret;
     }
@@ -40,15 +42,19 @@ int main(int argc, char** argv) {
 
     // Validate input
     if((ret = qsValidate(line, nline, &a, &b, &c)) != OK) {
+        printf("%d ERROR VAL\n", ret);
         qsErrors(ret, error, nline);
         return ret;
     }
 
     // Apply quad solver
     if((ret = qsSolve(a, b, c, &x1, &x2)) > ROOT_2) {
+        printf("ERROR SOLVE\n");
         qsErrors(ret, error, nline);
         return ret;
     }
+    
+    printf("%d %e %e\n", ret, x1, x2);
 
     // Check results
 //    if((ret = qsResults()) != OK) {
@@ -57,10 +63,10 @@ int main(int argc, char** argv) {
 //    }
 
     // Output results
-    if((ret = qsPutLine(line, strnlen(line, nline))) != OK) {
-        qsErrors(ret, error, nline);
-        return ret;
-    }
+//    if((ret = qsPutline(line, strnlen(line, nline))) != OK) {
+//        qsErrors(ret, error, nline);
+//        return ret;
+//    }
 
     return OK;
 }
