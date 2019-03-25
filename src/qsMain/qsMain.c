@@ -25,10 +25,9 @@ int main(int argc, char** argv) {
 //    }
 
     // Print program information header
-    printf("Quadratic Solver\n");
+    printf("JKK Enginers Quadratic Solver:\n");
     printf("  Version: 0.1.1\n");
-    printf("  Company: JKK Engineers\n");
-    printf("  For Help type \"help\"\n")
+    printf("  For Help type \"help\"\n\n");
 
     // Get input line
     if((ret = qsGetLine(line, nline)) != OK) {

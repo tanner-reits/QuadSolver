@@ -15,6 +15,10 @@
 #define FORMAT 7
 #define NULL_POINT 8
 #define PRODUCT 9
+#define X1_OUTF 10
+#define X2_OUTF 11
+#define X1_OUTD 12
+#define X2_OUTD 13
 
 int qsErrors(int, char*, int);
 
