@@ -55,12 +55,14 @@ int main(int argc, char** argv) {
     }
     
     printf("%d %e %e\n", ret, x1, x2);
+    
+    double *x1Val = &x1, *x2Val = &x2;
 
     // Check results
-//    if((ret = qsResults()) != OK) {
-//        qsErrors(ret, error, nline);
-//        return ret;
-//    }
+    if((ret = qsResults(x1Val, x2Val)) != OK) {
+        qsErrors(ret, error, nline);
+        return ret;
+    }
 
     // Output results
 //    if((ret = qsPutline(line, strnlen(line, nline))) != OK) {
