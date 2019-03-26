@@ -9,57 +9,11 @@ int main(int argc, char** argv) {
     double c;
     char buf[100];
     
-    strcpy(buf, "4.3 4.4 643.2");
-    ret = qsValidate(buf, strlen(buf), &a, &b, &c);
-    printf("%d %.7e %.7e %.7e\n", ret, a, b, c);
-    
-    strcpy(buf, "4.3 4.2 643.232");
-    ret = qsValidate(buf, strlen(buf), &a, &b, &c);
-    printf("%d %.7e %.7e %.7e\n", ret, a, b, c);
-    
-    strcpy(buf, "4.3 4.4");
-    ret = qsValidate(buf, strlen(buf), &a, &b, &c);
-    printf("%d %.7e %.7e %.7e\n", ret, a, b, c);
-    
-    strcpy(buf, "4.3 5434.234gdf 4.4");
-    ret = qsValidate(buf, strlen(buf), &a, &b, &c);
-    printf("%d %.7e %.7e %.7e\n", ret, a, b, c);
-    
-    strcpy(buf, "4.3e+10 4.4e-02 3.3e-05");
-    ret = qsValidate(buf, strlen(buf), &a, &b, &c);
-    printf("%d %.7e %.7e %.7e\n", ret, a, b, c);
-    
-    strcpy(buf, "4.3e+1 4.4e-2 3.3e-5");
-    ret = qsValidate(buf, strlen(buf), &a, &b, &c);
-    printf("%d %.7e %.7e %.7e\n", ret, a, b, c);
-    
-    strcpy(buf, "4.3.33 4.4 3.3");
-    ret = qsValidate(buf, strlen(buf), &a, &b, &c);
-    printf("%d %.7e %.7e %.7e\n", ret, a, b, c);
-    
-    strcpy(buf, "god4.3 4.3 4642.4");
-    ret = qsValidate(buf, strlen(buf), &a, &b, &c);
-    printf("%d %.7e %.7e %.7e\n", ret, a, b, c);
-    
-    strcpy(buf, "4.df3 4.3 4642.4");
-    ret = qsValidate(buf, strlen(buf), &a, &b, &c);
-    printf("%d %.7e %.7e %.7e\n", ret, a, b, c);
-    
-    strcpy(buf, "4.sdfd.3 4.3 4642.4");
-    ret = qsValidate(buf, strlen(buf), &a, &b, &c);
-    printf("%d %.7e %.7e %.7e\n", ret, a, b, c);
-    
-    strcpy(buf, "4.3e+45 4.3 4642.4");
-    ret = qsValidate(buf, strlen(buf), &a, &b, &c);
-    printf("%d %.7e %.7e %.7e\n", ret, a, b, c);
-    
-    strcpy(buf, "4.3e+5 4.3e-45 4642.4");
-    ret = qsValidate(buf, strlen(buf), &a, &b, &c);
-    printf("%d %.7e %.7e %.7e\n", ret, a, b, c);
-    
-    strcpy(buf, "4.3e+5 4.3e-4 4642.4e+40");
-    ret = qsValidate(buf, strlen(buf), &a, &b, &c);
-    printf("%d %.7e %.7e %.7e\n", ret, a, b, c);
+    while(fgets(buf, 100, stdin) != NULL) {
+        buf[strnlen(buf, 100) - 1] = '\0';
+        ret = qsValidate(buf, strnlen(buf, 100), &a, &b, &c);
+        printf("Ret = %d; A = %.7e; B = %.7e; C = %.7e\n", ret, a, b, c);
+    }
     
     return 0;
 }

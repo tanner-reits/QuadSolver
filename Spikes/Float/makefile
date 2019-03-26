@@ -1,6 +1,7 @@
-#ifndef RANGE_H
-#define RANGE_H
+CC = gcc
+CFLAGS = -O -Wall -pedantic
 
 ranges: ranges.o
 
-#endif
+clean: 
+	rm -f *.o core ranges

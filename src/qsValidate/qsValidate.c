@@ -3,6 +3,7 @@
 #include <string.h>
 #include <float.h>
 #include <math.h>
+#include <stdio.h>
 #include "../qsErrors/qsErrors.h"
 
 
@@ -19,9 +20,10 @@ int qsValidate(char* line, int nline, double* a, double* b, double* c) {
     *c = NAN;
     
     // Variables for parsing
-    char* err = NULL;
-    char* tok = NULL;
-    int args  = 0;
+    char* err  = NULL;
+    char* tok  = NULL;
+    int args   = 0;
+    int format = 0;
     char buf[nline + 1];
     
     strncpy(buf, line, nline);
@@ -33,7 +35,8 @@ int qsValidate(char* line, int nline, double* a, double* b, double* c) {
             args++;
         }
         else {
-            *a = NAN;
+            *a     = NAN;
+            format = 1;
         }
     }
     if((tok = strtok(NULL, " ")) != NULL) {
@@ -42,31 +45,39 @@ int qsValidate(char* line, int nline, double* a, double* b, double* c) {
             args++;
         }
         else {
-            *b = NAN;
+            *b     = NAN;
+            format = 1;
         }
     }
     if((tok = strtok(NULL, " ")) != NULL) {
         *c = strtod(tok, &err);
-        if(*err == 0) {
+        if(*err == 0 || *err == '\0') {
             args++;
         }
         else {
-            *c = NAN;
+            *c     = NAN;
+            format = 1;
         }
     }
     
+    if(format) {
+        return FORMAT;
+    }
     if(args < 3) {
         return ARGS;
     }
     
     // Check input ranges
-    if((*a < FLT_MIN) || (*a > FLT_MAX)) {
+    if(fabs(*a) > FLT_MAX) {
+        *a = NAN;
         return A_OUT;
     } 
-    if((*b < FLT_MIN) || (*b > FLT_MAX)) {
+    if(fabs(*b) > FLT_MAX) {
+        *b = NAN;
         return B_OUT;
     }
-    if((*c < FLT_MIN) || (*c > FLT_MAX)) {
+    if(fabs(*c) > FLT_MAX) {
+        *c = NAN;
         return C_OUT;
     } 
     
