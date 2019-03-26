@@ -1,5 +1,6 @@
 #include "qsLogEnable.h"
+#include "../qsErrors/qsErrors.h"
 
-int qsLogEnable(...) {
-    
+int qsLogEnable() {
+    return OK;
 }

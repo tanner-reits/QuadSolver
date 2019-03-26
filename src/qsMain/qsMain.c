@@ -55,7 +55,7 @@ int main(int argc, char** argv) {
 
     // Check results
     if(ret <= ROOT_2) {
-        if((ret = qsResults(ret, x1Val, x2Val, line, nline)) != OK) {
+        if((ret = qsResults(ret, x1, x2, line, nline)) != OK) {
             qsErrors(ret, line, nline);
         }
     }

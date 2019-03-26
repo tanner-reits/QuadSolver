@@ -25,12 +25,6 @@ int qsErrors(int error, char* line, int len) {
         case PRODUCT:
             strncpy(line, "The product of entered coefficients is out of bounds of a 64-bit double", len);
             break;
-        case X1_OUTF:
-            strncpy(line, "The value for X1 is out of the 32-bit float range", len);
-            break;
-        case X2_OUTF:
-            strncpy(line, "The value for X2 is out of the 32-bit float range", len);
-            break;
         case X1_OUTD:
             strncpy(line, "The value for X1 is not within the bounds of a 64-bit double", len);
             break;
