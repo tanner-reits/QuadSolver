@@ -10,8 +10,8 @@ int main(int argc, char** argv) {
     int nline = 100;
     
     while(fscanf(stdin, "%d %lf %lf\n", &res, &x1, &x2) == 3) {
-        qsResults(res, x1, x2, line, nline);
-        printf("%s\n", line);
+        int ret = qsResults(res, x1, x2, line, nline);
+        printf("RET = %d; %s\n", ret, line);
     }
     
     return OK;

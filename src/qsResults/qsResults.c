@@ -2,6 +2,8 @@
 #include "../qsErrors/qsErrors.h"
 #include <string.h>
 #include <stdio.h>
+#include <float.h>
+#include <math.h>
 
 int qsResults(int res, double x1, double x2, char* line, int nline) {
     // Format output string based on input
@@ -9,10 +11,23 @@ int qsResults(int res, double x1, double x2, char* line, int nline) {
         strncpy(line, "There are no real roots!", nline);
     }
     else if(res == ROOT_1) {
-        snprintf(line, nline, "This is a single/double root: X1 = %.7e", x1);
+        if(fabs(x1) <= DBL_MAX) {
+            snprintf(line, nline, "This is a single/double root: X1 = %.7e", x1);
+        }
+        else {
+            return X1_OUTD;
+        }
     }
     else {
-        snprintf(line, nline, "There are two real roots: X1 = %.7e and X2 = %.7e", x1, x2);
+        if(fabs(x1) <= X1_OUTD && fabs(x2) <= X2_OUTD) {
+            snprintf(line, nline, "There are two real roots: X1 = %.7e and X2 = %.7e", x1, x2);
+        }
+        else if(fabs(x1) > X1_OUTD) {
+            return X1_OUTD;
+        }
+        else {
+            return X2_OUTD;
+        }
     }
 
     return OK;

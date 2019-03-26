@@ -1,3 +1,4 @@
-There are two real roots: X1 = 1.0000000e+00 and X2 = 2.0000000e+00
-This is a single/double root: X1 = 1.4230000e+00
-There are no real roots!
+RET = 1; There are two real roots: X1 = 1.0000000e+00 and X2 = 2.0000000e+00
+RET = 1; This is a single/double root: X1 = 1.4230000e+00
+RET = 1; There are no real roots!
+RET = 10; There are no real roots!
