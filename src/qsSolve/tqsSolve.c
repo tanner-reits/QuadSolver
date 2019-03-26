@@ -2,22 +2,17 @@
 #include "qsSolve.h"
 
 int main(int argc, char** argv) {
-    int ret;
     double x1 = 0;
     double x2 = 0;
+    double a  = 0;
+    double b  = 0;
+    double c  = 0;
+    int ret;
     
-    ret = qsSolve(21, 34, 6.32, &x1, &x2);
-    printf("%d %.7e %.7e\n", ret, x1, x2);
+    while(fscanf(stdin, "%lf %lf %lf\n", &a, &b, &c) == 3) {
+        ret = qsSolve(a, b, c, &x1, &x2);
+        printf("Ret = %d; X1 = %.7e; X2 = %.7e\n", ret, x1, x2);
+    }
     
-    ret = qsSolve(3.23e+11, 1.123e+4, 4.4e-5, &x1, &x2);
-    printf("%d %.7e %.7e\n", ret, x1, x2);
-    
-    ret = qsSolve(0, 5, 23.3, &x1, &x2);
-    printf("%d %.7e %.7e\n", ret, x1, x2);
-    
-    ret = qsSolve(1.4e+9, 3.3e-10, 4.124e+3, &x1, &x2);
-    printf("%d %.7e %.7e\n", ret, x1, x2);
-    
-    ret = qsSolve(1, 2, 1, &x1, &x2);
-    printf("%d %.7e %.7e\n", ret, x1, x2);
+    return 0;
 }

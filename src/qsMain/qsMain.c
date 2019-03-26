@@ -12,7 +12,6 @@ int main(int argc, char** argv) {
     // Variables for functions
     int ret;
     char line[256];
-    char error[256];
     int nline = 256;
     double a  = 0;
     double b  = 0;
@@ -32,43 +31,37 @@ int main(int argc, char** argv) {
 
     // Get input line
     if((ret = qsGetline(line, nline)) != OK) {
-        printf("ERROR GET\n");
-        qsErrors(ret, error, nline);
-        return ret;
+        qsErrors(ret, line, nline);
     }
 
     // Check if user prompted for help
-//    qsHelp();
+//    if(strncmp(line, "help", nline) == 0) {
+//        qsHelp();
+//    }
 
     // Validate input
-    if((ret = qsValidate(line, nline, &a, &b, &c)) != OK) {
-        printf("%d ERROR VAL\n", ret);
-        qsErrors(ret, error, nline);
-        return ret;
+    if(ret == OK) {
+        if((ret = qsValidate(line, nline, &a, &b, &c)) != OK) {
+            qsErrors(ret, line, nline);
+        }
     }
 
     // Apply quad solver
-    if((ret = qsSolve(a, b, c, &x1, &x2)) > ROOT_2) {
-        printf("ERROR SOLVE\n");
-        qsErrors(ret, error, nline);
-        return ret;
+    if(ret == OK) {
+        if((ret = qsSolve(a, b, c, &x1, &x2)) > ROOT_2) {
+            qsErrors(ret, line, nline);
+        }
     }
-    
-    printf("%d %e %e\n", ret, x1, x2);
-    
-    double *x1Val = &x1, *x2Val = &x2;
 
     // Check results
-    if((ret = qsResults(x1Val, x2Val)) != OK) {
-        qsErrors(ret, error, nline);
-        return ret;
+    if(ret <= ROOT_2) {
+        if((ret = qsResults(ret, x1Val, x2Val, line, nline)) != OK) {
+            qsErrors(ret, line, nline);
+        }
     }
 
     // Output results
-//    if((ret = qsPutline(line, strnlen(line, nline))) != OK) {
-//        qsErrors(ret, error, nline);
-//        return ret;
-//    }
+    qsPutline(line, strnlen(line, nline));
 
     return OK;
 }

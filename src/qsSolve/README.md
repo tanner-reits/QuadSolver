@@ -1,3 +1,22 @@
-The qsSolve function solves the quadratic formula of format ax^2 + bx + c = 0 where a, b, and c are all user input values. The function returns the number of real roots (0, 1, or 2) or an error number if input there was invalid parameters passed to the function or if any calculations exceeded the maximim value of a double.
+This directory contains all necessary files for solving the quadratic equation and automated unit testing.
 
-Automated tests can be run using the make test command. These unit tests check the return values of the qsSolve function against known precision answers.
+TESTING:
+automated testing can be run using the 'make run-test' command
+all test cases from the qsSolveIn.txt function are directed from stdin
+output is directed to 'qsSolveOut.txt' and compared to 'tqsSolveOutReal.txt'
+
+RETURN VALUES:
+return flags are used to indicate success or error
+    Success Constants:
+        ROOT_0 = 0
+        ROOT_1 = 1
+        ROOT_2 = 2
+    Error Constants:
+        ARGS       = 3
+        A_OUT      = 4
+        B_OUT      = 5
+        C_OUT      = 6
+        FORMAT     = 7
+        NULL_POINT = 8
+        PRODUCT    = 9
+        

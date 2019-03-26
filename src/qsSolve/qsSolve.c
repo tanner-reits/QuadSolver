@@ -9,13 +9,16 @@ int qsSolve(double a, double b, double c, double* x1, double* x2) {
     *x2 = NAN;
     
     // Validate input
-    if((a < FLT_MIN) || (a > FLT_MAX)) {
+    if(isnan(a) || isnan(b) || isnan(c)) {
+        return FORMAT;
+    }
+    if(fabs(a) > FLT_MAX) {
         return A_OUT;
     } 
-    if((b < FLT_MIN) || (b > FLT_MAX)) {
+    if(fabs(b) > FLT_MAX) {
         return B_OUT;
     }
-    if((c < FLT_MIN) || (c > FLT_MAX)) {
+    if(fabs(c) > FLT_MAX) {
         return C_OUT;
     } 
     if(x1 == NULL) {
@@ -62,7 +65,7 @@ int qsSolve(double a, double b, double c, double* x1, double* x2) {
         *x1 = (-b - sqrt(b2 - (4 * a * c))) / (2 * a);
         *x2 = ((2 * c) / (-b - sqrt(b2 - (4 * a * c))));
     }
-    else if(b < 0) {
+    else {
         *x2 = (-b - sqrt(b2 - (4 * a * c))) / (2 * a);
         *x1 = ((2 * c) / (-b - sqrt(b2 - (4 * a * c))));
     }
