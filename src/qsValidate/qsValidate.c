@@ -60,11 +60,9 @@ int qsValidate(char* line, int nline, double* a, double* b, double* c) {
         }
     }
     
-    if(format) {
+    // If formatting flag set or too few args, return corresponding error
+    if(args < 3 || format) {
         return FORMAT;
-    }
-    if(args < 3) {
-        return ARGS;
     }
     
     // Check input ranges
