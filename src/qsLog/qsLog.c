@@ -14,4 +14,6 @@ int qsLog(char *line) {
 
     //Closes the file
     fclose(logFile);
+    
+    return 1;
 }

@@ -1,0 +1,6 @@
+1 2 1
+1 3 2
+help
+inf 1 1
+1 nan 2
+exit
