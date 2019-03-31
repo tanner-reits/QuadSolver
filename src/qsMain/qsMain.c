@@ -29,7 +29,8 @@ int main(int argc, char** argv) {
     // Print program information header
     printf("JKK Enginers Quadratic Solver:\n");
     printf("  Version: 0.1.1\n");
-    printf("  For Help type \"help\"\n\n");
+    printf("  For Help type \"help\"\n");
+    printf("  To exit, type \"exit\"\n\n");
 
     do {
         // Get input line
