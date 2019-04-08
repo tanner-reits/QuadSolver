@@ -8,6 +8,7 @@ int qsHelp() {
     // Explanation
     printf("ABOUT:\n");
     printf("\tThis Quad Solver program retrieves input values of A, B, and C from the user.\n");
+    printf("\tThese coefficients are then used to calculate the real roots of a quadratic formula.\n");
     
     // Input
     printf("INPUT:\n");
@@ -21,6 +22,11 @@ int qsHelp() {
     
     // Logging
     printf("LOGGING:\n");
+    printf("\tType 'log' to toggle logging on and off\n");
+        
+    // Exiting
+    printf("TO EXIT:\n");
+    printf("\tType 'exit' to quit the program\n");
     
     printf("*******************************************************************************\n\n");
     
