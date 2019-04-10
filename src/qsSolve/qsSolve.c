@@ -31,25 +31,25 @@ int qsSolve(double a, double b, double c, double* x1, double* x2) {
     // Check if b^2 out of range
     double b2 = b * b;
     if((b2 > DBL_MAX) || (b2 < -DBL_MAX)) {
-	printf("b^2\n");
+	//printf("b^2\n");
         return PRODUCT;
     }
     
     // Check if 2c out of range
     if((2 * c > DBL_MAX) || (2 * c < -DBL_MAX)) {
-	printf("2c\n");
+	//printf("2c\n");
         return PRODUCT;
     }
     
     // Check if 2a out of range
     if((2 * a > DBL_MAX) || (2 * a < -DBL_MAX)) {
-	printf("2a\n");
+	//printf("2a\n");
         return PRODUCT;
     }
     
     // Check if 4ac out of range
     if((4 * a * c > DBL_MAX) || (4 * a * c < -DBL_MAX)) {
-	printf("4ac\n");
+	//printf("4ac\n");
         return PRODUCT;
     }
     
