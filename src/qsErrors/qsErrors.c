@@ -14,7 +14,7 @@ int qsErrors(int error, char* line, int len) {
             strncpy(line, "The value for coefficient (B) is out of the 32-bit float range\n", len);
             break;
         case C_OUT:
-            strncpy(line, "The value for coefficient (A) is out of the 32-bit float range\n", len);
+            strncpy(line, "The value for coefficient (C) is out of the 32-bit float range\n", len);
             break;
         case FORMAT:
             strncpy(line, "One or more of the coefficients entered has a format violation\n", len);
