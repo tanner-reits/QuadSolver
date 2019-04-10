@@ -19,10 +19,10 @@ int qsResults(int res, double x1, double x2, char* line, int nline) {
         }
     }
     else {
-        if(fabs(x1) <= X1_OUTD && fabs(x2) <= X2_OUTD) {
+        if(fabs(x1) <= DBL_MAX && fabs(x2) <= DBL_MAX) {
             snprintf(line, nline, "There are two real roots: X1 = %.7e and X2 = %.7e\n", x1, x2);
         }
-        else if(fabs(x1) > X1_OUTD) {
+        else if(fabs(x1) > DBL_MAX) {
             return X1_OUTD;
         }
         else {
