@@ -5,7 +5,7 @@
 #include <float.h>
 #include <math.h>
 
-int qsResults(int res, double x1, double x2, char* line, int nline) {
+int qsResults(int res, double x1, double x2, char* line, int nline) {    
     // Format output string based on input
     if(res == ROOT_0) {
         strncpy(line, "There are no real roots!\n", nline);

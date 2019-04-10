@@ -36,19 +36,19 @@ int qsSolve(double a, double b, double c, double* x1, double* x2) {
     }
     
     // Check if 2c out of range
-    if((2 * c > DBL_MAX) || (2 * c < -DBL_MAX)) {
+    if((2 * c > DBL_MAX) || (fabs(2 * c) > DBL_MAX)) {
 	//printf("2c\n");
         return PRODUCT;
     }
     
     // Check if 2a out of range
-    if((2 * a > DBL_MAX) || (2 * a < -DBL_MAX)) {
+    if((2 * a > DBL_MAX) || (fabs(2 * a) > DBL_MAX)) {
 	//printf("2a\n");
         return PRODUCT;
     }
     
     // Check if 4ac out of range
-    if((4 * a * c > DBL_MAX) || (4 * a * c < -DBL_MAX)) {
+    if((4 * a * c > DBL_MAX) || (fabs(4 * a * c) > DBL_MAX)) {
 	//printf("4ac\n");
         return PRODUCT;
     }
@@ -59,7 +59,7 @@ int qsSolve(double a, double b, double c, double* x1, double* x2) {
         return ROOT_0;
     }
     else if(det == 0) {
-        *x1 = -b / (2 * c);
+        *x1 = -b / (2 * a);
         
         return ROOT_1;
     }
