@@ -4,7 +4,7 @@
 #include "../qsErrors/qsErrors.h"
 
 int qsGetline(char* line, int nline) {
-    printf("Please input the values A, B, and C seperated by spaces\n");
+    printf("Please input the values A, B, and C separated by spaces\n");
     printf("input A B C : <A> <B> <C>\n");
 
 //    char *a = NULL;
