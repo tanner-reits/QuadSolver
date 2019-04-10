@@ -1,0 +1,54 @@
+INPUT TO qsValidate:
+	Input Line: 1 2 1
+	Coef A: 0.000000
+	Coef B: 0.000000
+	Coef C: 0.000000
+
+RETURN VALUE FROM qsValidate:
+	Ret 1
+
+INPUT TO qsSolve:
+	Coef A: 1.000000
+	Coef B: 2.000000
+	Coef C: 1.000000
+	X1: 0.000000
+	X2: 0.000000
+
+RETURN VALUE FROM qsSolve:
+	Ret 1
+
+INPUT TO qsResults:
+	ret: 1
+	X1: -1.000000
+	X2: nan
+
+RETURN VALUE FROM qsSolve:
+	Ret 1
+
+INPUT TO qsValidate:
+	Input Line: 1 2 1
+	Coef A: 0.000000
+	Coef B: 0.000000
+	Coef C: 0.000000
+
+RETURN VALUE FROM qsValidate:
+	Ret 1
+
+INPUT TO qsSolve:
+	Coef A: 1.000000
+	Coef B: 2.000000
+	Coef C: 1.000000
+	X1: 0.000000
+	X2: 0.000000
+
+RETURN VALUE FROM qsSolve:
+	Ret 1
+
+INPUT TO qsResults:
+	Ret: 1
+	X1: -1.000000
+	X2: nan
+
+RETURN VALUE FROM qsSolve:
+	Ret: 1
+

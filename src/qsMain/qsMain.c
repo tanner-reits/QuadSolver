@@ -8,13 +8,13 @@
 #include "../qsPutLine/qsPutLine.h"
 #include "../qsResults/qsResults.h"
 #include "../qsHelp/qsHelp.h"
-//#include "../qsLogEnable/qsLogEnable.h"
 #include "../qsLog/qsLog.h"
 
 int main(int argc, char** argv) {
     // Variables for functions
     int ret;
     char line[256];
+    char buf[256];
     int log   = 0;
     int nline = 256;
     int exit  = 0;
@@ -23,12 +23,6 @@ int main(int argc, char** argv) {
     double c  = 0;
     double x1 = 0;
     double x2 = 0;
-
-    // Check if logging enable parameter passed as command line argument
-//    if((argc > 1) && (atoi(argv[1]) == 1)) {
-//        log  = qsLogEnable();
-//        qsLog("Logging has been enabled");
-//    }
 
     // Print program information header
     printf("JKK Engineers Quadratic Solver:\n");
@@ -65,32 +59,47 @@ int main(int argc, char** argv) {
         else {
             // Validate input
             if(ret == OK) {
+                if(log) {
+                    snprintf(buf, nline, "INPUT TO qsValidate:\n\tInput Line: %s\n\tCoef A: %lf\n\tCoef B: %lf\n\tCoef C: %lf\n", line, a, b, c);
+                    qsLog(buf);
+                }
                 if((ret = qsValidate(line, nline, &a, &b, &c)) != OK) {
                     qsErrors(ret, line, nline);
                 }
                 if(log) {
-                    qsLog(line);
+                    snprintf(buf, nline, "RETURN VALUE FROM qsValidate:\n\tRet %d\n", ret);
+                    qsLog(buf);
                 } 
             }
             
             // Apply quad solver
             if(ret == OK) {
+                if(log) {
+                    snprintf(buf, nline, "INPUT TO qsSolve:\n\tCoef A: %lf\n\tCoef B: %lf\n\tCoef C: %lf\n\tX1: %lf\n\tX2: %lf\n", a, b, c, x1, x2);
+                    qsLog(buf);
+                }
                 if((ret = qsSolve(a, b, c, &x1, &x2)) > ROOT_2) {
                     qsErrors(ret, line, nline);
                 }
                 if(log) {
-                    qsLog(line);
-                }
+                    snprintf(buf, nline, "RETURN VALUE FROM qsSolve:\n\tRet %d\n", ret);
+                    qsLog(buf);
+                } 
             }
 
             // Check results
             if(ret <= ROOT_2) {
+                if(log) {
+                    snprintf(buf, nline, "INPUT TO qsResults:\n\tRet: %d\n\tX1: %lf\n\tX2: %lf\n", ret, x1, x2);
+                    qsLog(buf);
+                }
                 if((ret = qsResults(ret, x1, x2, line, nline)) != OK) {
                     qsErrors(ret, line, nline);
                 }
                 if(log) {
-                    qsLog(line);
-                }
+                    snprintf(buf, nline, "RETURN VALUE FROM qsSolve:\n\tRet: %d\n", ret);
+                    qsLog(buf);
+                } 
             }
 
             // Output results
