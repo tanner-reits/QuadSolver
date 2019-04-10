@@ -48,7 +48,7 @@ int qsSolve(double a, double b, double c, double* x1, double* x2) {
     }
     
     // Check if 4ac out of range
-    if((4 * a * c > DBL_MAX) || (4 * a * c < DBL_MIN)) {
+    if((4 * a * c > DBL_MAX) || (4 * a * c < -DBL_MAX)) {
 	printf("4ac\n");
         return PRODUCT;
     }
